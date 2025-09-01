@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { LiquidGlassCard } from "@/components/ui/liquid-glass-card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
@@ -89,11 +90,11 @@ export default function ContattiPage() {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
         <div className={`relative z-10 mx-auto max-w-7xl px-6 lg:px-12 flex items-center justify-center ${heroCollapsed ? "min-h-[20vh]" : "min-h-[50vh] md:min-h-[60vh]"} transition-all duration-700`}>
-          <div className="text-center bg-black/50 backdrop-blur-sm px-6 py-6 rounded-2xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-md">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-2xl" style={{textShadow: '0 0 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.6)'}}>
               Contattaci
             </h1>
-            <p className="text-lg md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="text-lg md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-xl" style={{textShadow: '0 0 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.6)'}}>
               Siamo qui per rispondere alle vostre domande e offrirvi la migliore assistenza
             </p>
           </div>
@@ -101,21 +102,20 @@ export default function ContattiPage() {
       </section>
 
       {/* Contact Section */}
-      <section ref={nextSectionRef} className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-background to-accent/10"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <section ref={nextSectionRef} className="py-16 md:py-20 lg:py-24 bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="border border-border/50 bg-card/90 backdrop-blur-sm rounded-3xl shadow-lg">
-              <CardHeader className="p-8">
-                <CardTitle className="text-3xl font-bold text-foreground mb-4">Scrivici un Messaggio</CardTitle>
-                <CardDescription className="text-lg leading-relaxed">
+            <LiquidGlassCard className="rounded-3xl self-start max-w-3xl w-full" glassEffect={false}>
+              <CardHeader className="p-6">
+                <CardTitle className="text-2xl md:text-3xl font-bold text-foreground mb-2">Scrivici un Messaggio</CardTitle>
+                <CardDescription className="text-base md:text-lg leading-relaxed">
                   Compila il form sottostante e ti risponderemo entro 24 ore
                 </CardDescription>
               </CardHeader>
-              <CardContent className="p-8 pt-0">
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <CardContent className="p-6 pt-0">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-3">
                       <Label htmlFor="nome" className="text-lg font-semibold">Nome e Cognome *</Label>
                       <Input id="nome" name="nome" value={formData.nome} onChange={handleInputChange} placeholder="Il tuo nome completo" className="h-12 text-base" required />
@@ -126,7 +126,7 @@ export default function ContattiPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-3">
                       <Label htmlFor="telefono" className="text-lg font-semibold">Telefono</Label>
                       <Input id="telefono" name="telefono" value={formData.telefono} onChange={handleInputChange} placeholder="+39 123 456 7890" className="h-12 text-base" />
@@ -149,9 +149,9 @@ export default function ContattiPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-3 md:col-span-2">
                     <Label htmlFor="messaggio" className="text-lg font-semibold">Messaggio *</Label>
-                    <Textarea id="messaggio" name="messaggio" value={formData.messaggio} onChange={handleInputChange} placeholder="Descrivi brevemente la tua richiesta..." rows={6} className="text-base resize-none" required />
+                    <Textarea id="messaggio" name="messaggio" value={formData.messaggio} onChange={handleInputChange} placeholder="Descrivi brevemente la tua richiesta..." rows={5} className="text-base resize-vertical min-h-[120px] max-h-[220px]" required />
                   </div>
 
                   <Button type="submit" size="lg" className="w-full h-14 text-lg font-semibold rounded-2xl hover:scale-105 transition-transform">
@@ -160,11 +160,11 @@ export default function ContattiPage() {
                   </Button>
                 </form>
               </CardContent>
-            </Card>
+            </LiquidGlassCard>
 
             {/* Contact Information */}
-            <div className="space-y-8">
-              <Card className="border border-border/50 bg-card/90 backdrop-blur-sm rounded-3xl shadow-lg">
+            <div className="space-y-8 items-start">
+              <LiquidGlassCard className="rounded-3xl" glassEffect={false}>
                 <CardHeader className="p-8">
                   <CardTitle className="text-3xl font-bold text-foreground mb-4">Informazioni di Contatto</CardTitle>
                   <CardDescription className="text-lg leading-relaxed">
@@ -186,37 +186,16 @@ export default function ContattiPage() {
                     </div>
                   ))}
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
 
-              <Card className="border border-border/50 bg-card/90 backdrop-blur-sm rounded-3xl shadow-lg">
-                <CardHeader className="p-8">
-                  <CardTitle className="text-3xl font-bold text-foreground mb-4">Richiedi un Appuntamento</CardTitle>
-                  <CardDescription className="text-lg leading-relaxed">
-                    Prenota una consulenza gratuita presso il nostro studio
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-8 pt-0">
-                  <div className="space-y-6">
-                    <p className="text-muted-foreground text-lg leading-relaxed">
-                      Offriamo consulenze gratuite della durata di 30 minuti per valutare
-                      le vostre esigenze e proporvi la soluzione più adatta.
-                    </p>
-                    <Button size="lg" className="w-full h-14 text-lg font-semibold rounded-2xl hover:scale-105 transition-transform">
-                      <Clock className="h-6 w-6 mr-3" />
-                      Prenota Appuntamento
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-background to-secondary/10"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <section className="py-16 md:py-20 lg:py-24 bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">Dove Trovarci</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

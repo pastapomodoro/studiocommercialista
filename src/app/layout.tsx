@@ -2,13 +2,18 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
+import FooterGlow from '@/components/footer-glow'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Studio Notarile - Atti immobiliari, societari e successioni',
-  description: 'Studio notarile con competenza in atti immobiliari, societari, successioni e donazioni. Consulenza chiara, trasparente e tempi certi.',
+  title: 'Studio Veritas - Atti immobiliari, societari e successioni',
+  description: 'Studio Veritas: competenza notarile in atti immobiliari, societari, successioni e donazioni. Chiarezza, riservatezza e tempi certi.',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({
@@ -23,7 +28,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
-        <Footer />
+        <FooterGlow />
       </body>
     </html>
   )

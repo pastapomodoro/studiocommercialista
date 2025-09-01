@@ -2,7 +2,9 @@
 import React, { useRef, useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { LiquidGlassCard } from "@/components/ui/liquid-glass-card"
 import { Award, Users, Target, Heart, Mail, Phone, MapPin, GraduationCap } from "lucide-react"
+import Team1 from "@/components/team"
 
 export default function ChiSiamoPage() {
   const [heroCollapsed, setHeroCollapsed] = useState(false)
@@ -27,7 +29,7 @@ export default function ChiSiamoPage() {
     {
       name: "Dott. Marco Rossi",
       role: "Fondatore e Commercialista",
-      image: "/api/placeholder/300/300",
+      image: "/avv1.jpg",
       description: "Esperto commercialista con oltre 20 anni di esperienza nel settore fiscale e societario.",
       specializations: ["Diritto Tributario", "Consulenza Societaria", "Revisione Contabile"],
       education: "Laurea in Economia - Università Bocconi",
@@ -36,7 +38,7 @@ export default function ChiSiamoPage() {
     {
       name: "Dott.ssa Laura Bianchi",
       role: "Commercialista Senior",
-      image: "/api/placeholder/300/300",
+      image: "/avv2.jpg",
       description: "Specializzata in contabilità aziendale e assistenza fiscale per PMI.",
       specializations: ["Contabilità", "Fiscale Aziendale", "Bilanci"],
       education: "Laurea in Economia Aziendale - Università Cattolica",
@@ -45,7 +47,7 @@ export default function ChiSiamoPage() {
     {
       name: "Avv. Giovanni Verdi",
       role: "Consulente Legale",
-      image: "/api/placeholder/300/300",
+      image: "/avv3.jpg",
       description: "Esperto in diritto societario e consulenza legale per imprese.",
       specializations: ["Diritto Societario", "Contrattualistica", "Contenzioso"],
       education: "Laurea in Giurisprudenza - Università Statale",
@@ -54,7 +56,7 @@ export default function ChiSiamoPage() {
     {
       name: "Dott. Paolo Neri",
       role: "Consulente del Lavoro",
-      image: "/api/placeholder/300/300",
+      image: "/avv4.jpg",
       description: "Specializzato in diritto del lavoro e gestione del personale.",
       specializations: ["Diritto del Lavoro", "Buste Paga", "Consulenze Sindacali"],
       education: "Laurea in Scienze Politiche - Università Milano",
@@ -69,6 +71,13 @@ export default function ChiSiamoPage() {
     { icon: Award, title: "Eccellenza", description: "Perseguire l'eccellenza in ogni servizio offerto, garantendo risultati concreti e soddisfacenti per i nostri clienti." }
   ]
 
+  const teamMembersForCard = team.map(m => ({
+    name: m.name,
+    role: m.role,
+    bio: m.description,
+    imageUrl: m.image,
+  }))
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -78,11 +87,11 @@ export default function ChiSiamoPage() {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
         <div className={`relative z-10 mx-auto max-w-7xl px-6 lg:px-12 flex items-center justify-center ${heroCollapsed ? "min-h-[20vh]" : "min-h-[50vh] md:min-h-[60vh]"} transition-all duration-700`}>
-          <div className="text-center bg-black/50 backdrop-blur-sm px-6 py-6 rounded-2xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-md">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-2xl" style={{textShadow: '0 0 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.6)'}}>
               Chi Siamo
             </h1>
-            <p className="text-lg md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="text-lg md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-xl" style={{textShadow: '0 0 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.6)'}}>
               Un team di professionisti dedicati al vostro successo fiscale e finanziario
             </p>
           </div>
@@ -90,9 +99,8 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* Studio Description */}
-      <section ref={nextSectionRef} className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-background to-accent/10"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <section ref={nextSectionRef} className="py-16 md:py-20 lg:py-24 bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">Il Nostro Studio</h2>
@@ -136,9 +144,8 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-background to-secondary/10"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <section className="py-16 md:py-20 lg:py-24 bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">I Nostri Valori</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -162,104 +169,39 @@ export default function ChiSiamoPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-muted/20 via-background to-muted/10"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">Il Nostro Team</h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Professionisti esperti al vostro servizio
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border border-border/50 bg-card/90 backdrop-blur-sm rounded-3xl hover:scale-105">
-                <div className="md:flex">
-                  <div className="md:w-1/3">
-                    <div className="bg-muted/20 h-48 md:h-full flex items-center justify-center group-hover:bg-muted/30 transition-colors">
-                      <Users className="h-20 w-20 text-muted-foreground" />
-                    </div>
-                  </div>
-                  <div className="md:w-2/3 p-8">
-                    <CardHeader className="p-0 mb-6">
-                      <CardTitle className="text-2xl font-bold mb-2 text-foreground">{member.name}</CardTitle>
-                      <CardDescription className="text-primary font-semibold text-lg">
-                        {member.role}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                      <p className="text-muted-foreground mb-6 text-lg leading-relaxed">{member.description}</p>
-
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-3">
-                            <GraduationCap className="h-5 w-5 text-primary" />
-                            Formazione
-                          </h4>
-                          <p className="text-muted-foreground text-base">{member.education}</p>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-3">Specializzazioni</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {member.specializations.map((spec, specIndex) => (
-                              <span key={specIndex} className="bg-accent/20 text-accent-foreground text-sm px-3 py-2 rounded-xl font-medium">
-                                {spec}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-3">Certificazioni</h4>
-                          <ul className="text-muted-foreground space-y-2">
-                            {member.certifications.map((cert, certIndex) => (
-                              <li key={certIndex} className="flex items-center gap-2 text-base">
-                                <Award className="h-4 w-4 text-primary flex-shrink-0" />
-                                {cert}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Team Section (2x2) */}
+      <Team1
+        title="Il Nostro Team"
+        subtitle="Professionisti esperti al vostro servizio"
+        members={teamMembersForCard}
+      />
 
       {/* Contact CTA */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary/80"></div>
-        <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-12 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary-foreground">
+      <section className="py-16 md:py-20 lg:py-24 bg-card">
+        <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
             Conosceteci di Persona
           </h2>
-          <p className="text-lg md:text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl mb-8 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Venite a trovarci nel nostro studio di Milano per una consulenza gratuita
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-card/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-6 flex items-center justify-center gap-4 hover:bg-card/20 transition-colors">
-              <MapPin className="h-8 w-8 text-primary-foreground" />
-              <span className="text-primary-foreground font-medium text-lg">Via Roma, 123 - Milano</span>
+            <div className="bg-card border border-border rounded-2xl p-6 flex items-center justify-center gap-4 transition-colors">
+              <MapPin className="h-8 w-8 text-primary" />
+              <span className="text-foreground font-medium text-lg">Via Roma, 123 - Milano</span>
             </div>
-            <div className="bg-card/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-6 flex items-center justify-center gap-4 hover:bg-card/20 transition-colors">
-              <Phone className="h-8 w-8 text-primary-foreground" />
-              <span className="text-primary-foreground font-medium text-lg">+39 02 1234 5678</span>
+            <div className="bg-card border border-border rounded-2xl p-6 flex items-center justify-center gap-4 transition-colors">
+              <Phone className="h-8 w-8 text-primary flex-shrink-0" />
+              <span className="text-foreground font-medium text-lg whitespace-nowrap">+39 345 123 4567</span>
             </div>
-            <div className="bg-card/10 backdrop-blur-sm border border-primary-foreground/20 rounded-2xl p-6 flex items-center justify-center gap-4 hover:bg-card/20 transition-colors">
-              <Mail className="h-8 w-8 text-primary-foreground" />
-              <span className="text-primary-foreground font-medium text-lg">info@studiocommercialista.it</span>
+            <div className="bg-card border border-border rounded-2xl p-6 flex items-center justify-center gap-4 transition-colors">
+              <Mail className="h-8 w-8 text-primary" />
+              <span className="text-foreground font-medium text-lg">info@studioveritas.it</span>
             </div>
           </div>
 
-          <Button size="lg" className="bg-card text-primary hover:bg-muted h-14 px-8 text-lg font-semibold rounded-2xl hover:scale-105 transition-transform">
+          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 text-lg font-semibold rounded-2xl transition-transform">
             Prenota un Appuntamento
           </Button>
         </div>

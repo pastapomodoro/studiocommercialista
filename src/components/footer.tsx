@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Scale className="h-6 w-6 text-accent" />
-              <span className="font-bold text-lg">Studio Notarile</span>
+              <span className="font-bold text-lg">Studio Veritas</span>
             </div>
             <p className="text-background/80 text-sm">
               Atti immobiliari e societari, successioni e donazioni. Chiarezza, riservatezza e tempi certi.
@@ -54,7 +54,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>info@studiocommercialista.it</span>
+                <span>info@studioveritas.it</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4 text-primary" />
@@ -67,7 +67,7 @@ const Footer = () => {
         <div className="border-t border-background/30 mt-12 pt-10">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-background/70 text-sm">
-              © 2024 Studio Notarile. Tutti i diritti riservati.
+              © 2025 Studio Veritas. Tutti i diritti riservati.
             </p>
             <p className="text-background/70 text-sm mt-2 md:mt-0">
               Partita IVA: 12345678901

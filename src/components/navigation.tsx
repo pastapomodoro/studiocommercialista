@@ -2,8 +2,9 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { Menu, X, FileText, Users, Phone, Scale } from "lucide-react"
+import { Menu, X, FileText, Users, Phone, Scale, Mail, Home } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,10 +12,10 @@ const Navigation = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   const navItems = [
-    { href: "/", label: "Home", icon: FileText },
+    { href: "/", label: "Home", icon: Home },
     { href: "/servizi", label: "Aree di Attività", icon: FileText },
     { href: "/chi-siamo", label: "Lo Studio", icon: Users },
-    { href: "/contatti", label: "Contatti", icon: Phone },
+    { href: "/contatti", label: "Contatti", icon: Mail },
   ]
 
   return (
@@ -23,8 +24,8 @@ const Navigation = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <Scale className="h-7 w-7 text-accent" />
-              <span className="font-bold text-xl text-foreground">Studio Notarile</span>
+              <Image src="/logo.png" alt="Studio Veritas" width={32} height={32} className="h-8 w-auto" />
+              <span className="font-bold text-xl text-foreground">Studio Veritas</span>
             </Link>
           </div>
 

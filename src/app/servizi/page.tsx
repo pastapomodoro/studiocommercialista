@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { LiquidGlassCard } from "@/components/ui/liquid-glass-card"
 import { CheckCircle, Users, FileText, BarChart3, Calculator, Building2, Shield, Clock } from "lucide-react"
 
 export default function ServiziPage() {
@@ -119,11 +120,11 @@ export default function ServiziPage() {
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
         <div className={`relative z-10 mx-auto max-w-7xl px-6 lg:px-12 flex items-center justify-center ${heroCollapsed ? "min-h-[20vh]" : "min-h-[50vh] md:min-h-[60vh]"} transition-all duration-700`}>
-          <div className="text-center bg-black/50 backdrop-blur-sm px-6 py-6 rounded-2xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-md">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-2xl" style={{textShadow: '0 0 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.6)'}}>
               I Nostri Servizi
             </h1>
-            <p className="text-lg md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="text-lg md:text-xl text-white/95 max-w-4xl mx-auto leading-relaxed drop-shadow-xl" style={{textShadow: '0 0 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.6)'}}>
               Soluzioni complete e personalizzate per tutte le vostre esigenze fiscali e contabili
             </p>
           </div>
@@ -131,27 +132,26 @@ export default function ServiziPage() {
       </section>
 
       {/* Services Grid */}
-      <section ref={nextSectionRef} className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-background to-accent/10"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <section ref={nextSectionRef} className="py-16 md:py-20 lg:py-24 bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="group h-full hover:shadow-2xl transition-all duration-500 border border-border/50 bg-card/90 backdrop-blur-sm rounded-3xl hover:scale-105 hover:-translate-y-2">
-                <CardHeader className="p-8">
+              <LiquidGlassCard key={index} className="group rounded-3xl">
+                <div className="p-8">
                   <div className="flex items-center gap-6 mb-6">
                     <div className="bg-accent/20 p-4 rounded-2xl group-hover:bg-accent/30 transition-colors">
                       <service.icon className="h-10 w-10 text-accent-foreground" />
                     </div>
                     <div className="flex-1">
-                      <CardTitle className="text-2xl font-bold text-foreground mb-2">{service.title}</CardTitle>
+                      <h3 className="text-2xl font-bold text-foreground mb-2">{service.title}</h3>
                       <div className="text-lg font-semibold text-primary">{service.price}</div>
                     </div>
                   </div>
-                  <CardDescription className="text-base leading-relaxed">
+                  <p className="text-base leading-relaxed text-muted-foreground">
                     {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-8 pt-0">
+                  </p>
+                </div>
+                <div className="p-8 pt-0">
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center gap-3 text-sm">
@@ -163,17 +163,16 @@ export default function ServiziPage() {
                   <Button className="w-full h-12 rounded-2xl font-semibold hover:scale-105 transition-transform">
                     Richiedi Informazioni
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </LiquidGlassCard>
             ))}
           </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-background to-secondary/10"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-12">
+      <section className="py-16 md:py-20 lg:py-24 bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">Come Lavoriamo</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -234,9 +233,8 @@ export default function ServiziPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-muted/20 via-background to-muted/10"></div>
-        <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-12">
+      <section className="py-16 md:py-20 lg:py-24 bg-background">
+        <div className="mx-auto max-w-4xl px-6 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">Domande Frequenti</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -297,21 +295,20 @@ export default function ServiziPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary/80"></div>
-        <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-12 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary-foreground">
+      <section className="py-16 md:py-20 lg:py-24 bg-card">
+        <div className="mx-auto max-w-4xl px-6 lg:px-12 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
             Avete Bisogno di un Servizio Specifico?
           </h2>
-          <p className="text-lg md:text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl mb-8 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Contattateci per una consulenza gratuita e scoprirete come possiamo aiutarvi
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="lg" className="bg-card text-primary hover:bg-muted h-14 px-8 text-lg font-semibold rounded-2xl hover:scale-105 transition-transform">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-8 text-lg font-semibold rounded-2xl transition-transform">
               <Clock className="h-6 w-6 mr-3" />
               Richiedi Preventivo Gratuito
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-card hover:text-primary h-14 px-8 text-lg font-semibold rounded-2xl hover:scale-105 transition-transform">
+            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-card h-14 px-8 text-lg font-semibold rounded-2xl transition-transform">
               Contattaci Subito
             </Button>
           </div>
